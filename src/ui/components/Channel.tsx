@@ -7,7 +7,7 @@ import ChannelMessage from './Channel/Message';
 import Loading from './Loading';
 
 
-const Channel: React.FC<any> = ({ channel }) => {
+const Channel: React.FC<any> = ({ channel }: { channel: { teamId: string, id: string, name: string, description: string}}) => {
   const [messages, setMessages] = React.useState<any[]>();
   useAsyncDataEffect(
     () => getChannelMessages(channel.teamId, channel.id),
@@ -33,7 +33,7 @@ const Channel: React.FC<any> = ({ channel }) => {
         className="py-4 flex-1 overflow-y-scroll channel-messages-list"
         role="list"
       >
-        {messages.map((m) => (
+        {messages.map((m: { id: string, body: string, user: string, createdAt: string}) => (
           <ChannelMessage
             key={m.id}
             body={m.body}

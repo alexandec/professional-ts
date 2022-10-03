@@ -26,7 +26,7 @@ export function useAsyncDataEffect(
         if (cancelled) return;
         else d.resolve(jsonData);
       })
-      .catch(d.reject);
+      .catch(err => d.reject(err));
 
     d.promise
       .then((data: any) => {
