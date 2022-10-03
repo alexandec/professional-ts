@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { getChannelMessages } from '../../data/messages';
+import { IChannel, IMessage } from '../../types';
 import { useAsyncDataEffect } from '../../utils/api';
 import ChannelFooter from './Channel/Footer';
 import ChannelHeader from './Channel/Header';
 import ChannelMessage from './Channel/Message';
 import Loading from './Loading';
 
-
-const Channel: React.FC<any> = ({ channel }: { channel: { teamId: string, id: string, name: string, description: string}}) => {
-  const [messages, setMessages] = React.useState<any[]>();
+const Channel = ({ channel }: { channel: IChannel }) => {
+  const [messages, setMessages] = React.useState<IMessage[]>();
   useAsyncDataEffect(
     () => getChannelMessages(channel.teamId, channel.id),
     {
@@ -33,7 +33,7 @@ const Channel: React.FC<any> = ({ channel }: { channel: { teamId: string, id: st
         className="py-4 flex-1 overflow-y-scroll channel-messages-list"
         role="list"
       >
-        {messages.map((m: { id: string, body: string, user: string, createdAt: string}) => (
+        {messages.map((m) => (
           <ChannelMessage
             key={m.id}
             body={m.body}

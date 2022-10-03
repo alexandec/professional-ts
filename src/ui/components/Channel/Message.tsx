@@ -1,7 +1,16 @@
 import * as React from 'react';
+import { IUser } from '../../../types';
 import { formatTimestamp } from '../../../utils/date';
 
-const Message: React.FC<any> = ({ user, date, body }: { user: any, date: Date, body: any}) => (
+const Message: React.FC<any> = ({
+  user,
+  date,
+  body,
+}: {
+  user: IUser;
+  date: Date;
+  body: string;
+}) => (
   <div
     className="flex items-start px-6 py-2 text-sm hover-target hover:bg-gray-100 message"
     role="listitem"

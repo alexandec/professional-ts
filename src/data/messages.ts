@@ -1,6 +1,10 @@
+import { IMessage } from '../types';
 import { apiCall } from '../utils/networking';
 
-const cachedMessageRecordArrays: Record<string, any> = {};
+const cachedMessageRecordArrays: Record<
+  string,
+  Promise<IMessage[]>
+> = {};
 
 export async function getChannelMessages(
   teamId: string,

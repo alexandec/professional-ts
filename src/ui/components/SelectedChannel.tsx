@@ -1,7 +1,15 @@
 import * as React from 'react';
+import { match } from 'react-router';
+import { IChannel } from '../../types';
 import Channel from './Channel';
 
-const SelectedChannel: React.FC<any> = ({ match, channels }) => {
+const SelectedChannel = ({
+  match,
+  channels,
+}: {
+  match: match<{ channelId: string }>;
+  channels: IChannel[];
+}) => {
   if (!channels) throw new Error('no channels');
   if (!match) throw new Error('no match');
 
@@ -10,7 +18,7 @@ const SelectedChannel: React.FC<any> = ({ match, channels }) => {
   const { channelId: selectedChannelId } = params;
   if (!selectedChannelId) return <p>Invalid channelId</p>;
   const selectedChannel = channels.find(
-    (c: any) => c.id === selectedChannelId,
+    (c) => c.id === selectedChannelId,
   );
   if (!selectedChannel)
     return (

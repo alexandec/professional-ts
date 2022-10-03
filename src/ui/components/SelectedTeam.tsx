@@ -1,7 +1,15 @@
 import * as React from 'react';
+import { match } from 'react-router';
+import { ITeam } from '../../types';
 import Team from './Team';
 
-const SelectedTeam: React.FC<any> = ({ match, teams }) => {
+const SelectedTeam = ({
+  match,
+  teams,
+}: {
+  match: match<{ teamId: string }>;
+  teams: ITeam[];
+}) => {
   if (!match) throw new Error('no match');
 
   const { params } = match;
