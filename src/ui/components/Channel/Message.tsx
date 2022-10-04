@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IUser } from '../../../types';
 import { formatTimestamp } from '../../../utils/date';
 
-const Message: React.FC<any> = ({
+const Message = ({
   user,
   date,
   body,

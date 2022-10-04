@@ -1,8 +1,11 @@
 import * as React from 'react';
 
-const Loading: React.FC<any> = ({
+const Loading = ({
   message = 'Loading...',
   children,
+}: {
+  message: string;
+  children?: React.ReactNode;
 }) => (
   <h1>
     {message}...
